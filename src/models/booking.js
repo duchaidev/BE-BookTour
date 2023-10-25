@@ -35,12 +35,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
+      bookingId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       numberOfParticipants: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       totalPrice: {
         type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      dateStart: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
       status: {

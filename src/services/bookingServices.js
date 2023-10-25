@@ -29,6 +29,8 @@ let bookingServices = {
         bookingDate: new Date(),
         numberOfParticipants: data?.numberOfParticipants || 1,
         totalPrice: data?.totalPrice,
+        dateStart: data?.dateStart,
+        bookingId: data?.bookingId,
       });
       return { message: "Create tour successfully" };
     } catch (error) {
@@ -40,11 +42,6 @@ let bookingServices = {
       const booking = await db.Booking.findAll({
         include: [
           {
-            model: db.Customer,
-            as: "bookingCustomer",
-            attributes: ["fullName", "email", "phoneNumber", "address", "id"],
-          },
-          {
             model: db.Tour,
             as: "tourBooking",
             attributes: [
@@ -53,8 +50,13 @@ let bookingServices = {
               "duration",
               "id",
               "startDates",
-              "images",
+              "image",
             ],
+          },
+          {
+            model: db.Customer,
+            as: "bookingCustomer",
+            attributes: ["fullName", "email", "phoneNumber", "address", "id"],
           },
         ],
       });

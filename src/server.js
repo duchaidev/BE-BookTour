@@ -6,10 +6,12 @@ const tourRoute = require("./routes/tourRoute.js");
 const bookingRoute = require("./routes/bookingRoute.js");
 const categoryRoute = require("./routes/categoryRoute.js");
 const postRoute = require("./routes/postRoute.js");
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 6969;
+connectDB();
 
 // app.use(function (req, res, next) {
 //   // Website you wish to allow to connect
@@ -34,7 +36,13 @@ const port = process.env.PORT || 6969;
 //   // Pass to next layer of middleware
 //   next();
 // });
-connectDB();
+
+app.use(
+  cors({
+    origin: process.env.URL_REACT,
+    credentials: true,
+  })
+);
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));

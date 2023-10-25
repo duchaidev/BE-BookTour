@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      bookingId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       customerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -27,6 +31,10 @@ module.exports = {
       },
       totalPrice: {
         type: Sequelize.FLOAT,
+        allowNull: false,
+      },
+      dateStart: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       status: {

@@ -9,6 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      slug: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING,
+      },
       category: {
         // Thêm phân loại (category)
         type: Sequelize.STRING,
@@ -32,8 +37,8 @@ module.exports = {
         // Thêm tên khách sạn
         type: Sequelize.STRING,
       },
-      images: {
-        type: Sequelize.STRING,
+      image: {
+        type: Sequelize.BLOB("long"),
       },
       itinerary: {
         // Lộ trình của tour
@@ -61,7 +66,9 @@ module.exports = {
         // Thêm loại phương tiện (xe máy, ô tô, ...)
         type: Sequelize.STRING,
       },
-
+      status: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
