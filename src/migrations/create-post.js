@@ -29,6 +29,14 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      image: {
+        type: Sequelize.BLOB("long"),
+        allowNull: true,
+      },
+      slug: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

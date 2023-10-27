@@ -6,5 +6,6 @@ const router = express.Router();
 router.get("/", postController.getAllPost);
 router.get("/:id", postController.getPostById);
 router.post("/", postController.createPost);
+router.put("/edit-tour/:id", postController.updatePost);
 
 module.exports = router;

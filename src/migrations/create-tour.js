@@ -21,6 +21,14 @@ module.exports = {
       description: {
         type: Sequelize.BLOB("long"),
       },
+      featured: {
+        // Thêm trường featured
+        type: Sequelize.BOOLEAN,
+      }, // Thêm trường featured
+      tourHot: {
+        // Thêm trường tourHot
+        type: Sequelize.BOOLEAN,
+      }, // Thêm trường tourHot
       difficulty: {
         // Độ khó của tour
         type: Sequelize.STRING,

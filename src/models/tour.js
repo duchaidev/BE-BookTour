@@ -27,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       maxGroupSize: DataTypes.INTEGER, // Số lượng người tối đa trong 1 nhóm
       name: DataTypes.STRING,
       price: DataTypes.STRING,
+      featured: DataTypes.BOOLEAN, // Thêm trường featured
+      tourHot: DataTypes.BOOLEAN, // Thêm trường tourHot
       startDates: DataTypes.DATE, // Thêm ngày bắt đầu tour
       tourConditions: DataTypes.STRING, // Điều kiện của tour
       vehicleType: DataTypes.STRING, // Thêm loại phương tiện (xe máy, ô tô, ...)

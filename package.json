@@ -17,6 +17,7 @@
     "@babel/node": "^7.22.19",
     "@babel/preset-env": "^7.22.20",
     "axios": "^1.5.1",
+    "buffer": "^6.0.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",

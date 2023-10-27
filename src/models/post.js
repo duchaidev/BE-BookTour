@@ -22,6 +22,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      image: {
+        type: DataTypes.BLOB("long"),
+        allowNull: true,
+      },
+      slug: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       trending: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

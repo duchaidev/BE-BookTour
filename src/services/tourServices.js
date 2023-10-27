@@ -1,7 +1,7 @@
 const db = require("../models");
 const slugify = require("slugify");
 const crypto = require("crypto");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 
 let tourServices = {
   createSlug: async (title) => {
@@ -36,12 +36,13 @@ let tourServices = {
     }
   },
   getOneTourService: async (id) => {
+    console.log(id);
     try {
       if (!id) {
         throw { message: "Missing required fields" };
       }
       let tour = await db.Tour.findOne({
-        where: { [Op.or]: [{ slug: id }, { id: id }] },
+        where: { [Op.or]: [{ id: id }, { slug: id }] },
       });
       if (!tour) {
         throw { message: "Tour not found" };
@@ -68,13 +69,22 @@ let tourServices = {
     }
   },
   updateTourService: async (data, id) => {
+    console.log(id);
     try {
       let tour = await db.Tour.findByPk(id);
       if (!tour) {
         throw { message: "Tour not found" };
       }
-      tour.update(data);
-      return tour;
+      // console.log(tour);
+      const { slug, ...other } = data;
+      // console.log(data);
+      tour.update(
+        {
+          ...other,
+        },
+        { where: { id: id } }
+      );
+      return data;
     } catch (error) {
       throw error;
     }
