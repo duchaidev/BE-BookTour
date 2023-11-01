@@ -6,6 +6,7 @@ const tourRoute = require("./routes/tourRoute.js");
 const bookingRoute = require("./routes/bookingRoute.js");
 const categoryRoute = require("./routes/categoryRoute.js");
 const postRoute = require("./routes/postRoute.js");
+const contactRoute = require("./routes/contactRoute.js");
 const cors = require("cors");
 
 const app = express();
@@ -52,6 +53,7 @@ app.use("/api/v1/tour", tourRoute);
 app.use("/api/v1/booking", bookingRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/post", postRoute);
+app.use("/api/v1/contact", contactRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -1,5 +1,6 @@
 const db = require("../models");
 const slugify = require("slugify");
+const crypto = require("crypto");
 let postServices = {
   createSlug: async (title) => {
     let slug = slugify(title, {
@@ -48,7 +49,6 @@ let postServices = {
         throw { message: "Post not found" };
       }
       const { slug, ...other } = data;
-      // console.log(data);
       post.update(
         {
           ...other,
@@ -63,7 +63,8 @@ let postServices = {
   createPostService: async (post) => {
     try {
       const { title, content, image } = post;
-      if ((!title || !content, image)) {
+      console.log(title, content);
+      if (!title || !content || !image) {
         throw { statusCode: 400, message: "Title and content are required" };
       }
       let slug = await postServices.createSlug(title);
@@ -73,7 +74,7 @@ let postServices = {
         author: post?.author || "Anonymous",
         category: post?.category || "Other",
         trending: post?.trending || false,
-        image: post?.image || null,
+        image: image || null,
         slug: slug,
       });
       return { post: newPost, message: "Create post successfully" };

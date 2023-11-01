@@ -1,0 +1,47 @@
+name: Build and Deploy Docker Image
+
+on:
+  push:
+    branches:
+      - main # chỉ áp dụng khi push code lên nhánh main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Environment Variables
+      run: |
+        echo "PORT=$PORT" >> .env
+        echo "URL_REACT=$URL_REACT" >> .env
+        echo "JWT_ACCESS_KEY=$JWT_ACCESS_KEY" >> .env
+        echo "JWT_REFRESH_KEY=$JWT_REFRESH_KEY" >> .env
+        echo "DB_HOST=$DB_HOST" >> .env
+        echo "DB_NAME=$DB_NAME" >> .env
+        echo "DB_USERNAME=$DB_USERNAME" >> .env
+        echo "DB_PASSWORD=$DB_PASSWORD" >> .env
+        echo "DB_PORT=$DB_PORT" >> .env
+        echo "DB_DIALECT=$DB_DIALECT" >> .env
+      env:
+        PORT: ${{ vars.PORT }}
+        URL_REACT: ${{ vars.URL_REACT }}
+        JWT_ACCESS_KEY: ${{ vars.JWT_ACCESS_KEY }}
+        JWT_REFRESH_KEY: ${{ vars.JWT_REFRESH_KEY }}
+        DB_HOST: ${{ vars.DB_HOST }}
+        DB_NAME: ${{ vars.DB_NAME }}
+        DB_USERNAME: ${{ vars.DB_USERNAME }}
+        DB_PASSWORD: ${{ vars.DB_PASSWORD }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_DIALECT: ${{ vars.DB_DIALECT }}
+
+    - name: Login to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker Image
+      run: docker build -t duchaidev/be-booktour:latest .
+
+    - name: Push Docker Image
+      run: docker push duchaidev/be-booktour:latest

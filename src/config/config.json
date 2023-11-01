@@ -3,7 +3,7 @@
     "username": "root",
     "password": "123456",
     "database": "doancoso",
-    "host": "127.0.0.1",
+    "host": "83.229.83.144",
     "dialect": "mysql"
   },
   "test": {
