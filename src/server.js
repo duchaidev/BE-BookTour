@@ -44,6 +44,19 @@ app.use(
   })
 );
 
+const allowedOrigins = ["https://duchai.id.vn", "http://83.229.83.144/"];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const isAllowed = !origin || allowedOrigins.includes(origin);
+      const allowedOrigin = isAllowed ? origin : allowedOrigins[0];
+      callback(null, allowedOrigin);
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
