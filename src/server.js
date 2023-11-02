@@ -37,14 +37,14 @@ connectDB();
 //   // Pass to next layer of middleware
 //   next();
 // });
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     credentials: true,
+//   })
+// );
 
-const allowedOrigins = ["https://duchai.id.vn", "http://83.229.83.144/"];
+const allowedOrigins = [process.env.URL_REACT, process.env.DOMAINS];
 
 app.use(
   cors({

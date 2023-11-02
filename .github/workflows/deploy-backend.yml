@@ -17,6 +17,7 @@ jobs:
       run: |
         echo "PORT=$PORT" >> .env
         echo "URL_REACT=$URL_REACT" >> .env
+        echo "DOMAINS=$DOMAINS" >> .env
         echo "JWT_ACCESS_KEY=$JWT_ACCESS_KEY" >> .env
         echo "JWT_REFRESH_KEY=$JWT_REFRESH_KEY" >> .env
         echo "DB_HOST=$DB_HOST" >> .env
@@ -28,6 +29,7 @@ jobs:
       env:
         PORT: ${{ vars.PORT }}
         URL_REACT: ${{ vars.URL_REACT }}
+        DOMAINS: ${{ vars.DOMAINS }}
         JWT_ACCESS_KEY: ${{ vars.JWT_ACCESS_KEY }}
         JWT_REFRESH_KEY: ${{ vars.JWT_REFRESH_KEY }}
         DB_HOST: ${{ vars.DB_HOST }}
