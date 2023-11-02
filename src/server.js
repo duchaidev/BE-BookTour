@@ -38,9 +38,17 @@ connectDB();
 //   next();
 // });
 
+const allowedOrigins = [process.env.URL_REACT, process.env.DOMAINS];
+
 app.use(
   cors({
-    origin: process.env.URL_REACT,
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
