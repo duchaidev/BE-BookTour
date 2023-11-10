@@ -28,7 +28,7 @@ jobs:
         echo "DB_DIALECT=$DB_DIALECT" >> .env
       env:
         PORT: ${{ vars.PORT }}
-        URL_REACT: ${{ secrets.URL_REACT }}
+        URL_REACT: ${{ vars.URL_REACT }}
         DOMAINS: ${{ vars.DOMAINS }}
         JWT_ACCESS_KEY: ${{ vars.JWT_ACCESS_KEY }}
         JWT_REFRESH_KEY: ${{ vars.JWT_REFRESH_KEY }}
@@ -36,7 +36,7 @@ jobs:
         DB_NAME: ${{ vars.DB_NAME }}
         DB_USERNAME: ${{ vars.DB_USERNAME }}
         DB_PASSWORD: ${{ vars.DB_PASSWORD }}
-        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_PORT: ${{ vars.DB_PORT }}
         DB_DIALECT: ${{ vars.DB_DIALECT }}
 
     - name: Login to Docker Hub
