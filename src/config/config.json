@@ -3,20 +3,20 @@
     "username": "root",
     "password": "123456",
     "database": "doancoso",
-    "host": "83.229.83.144",
+    "host": "139.162.7.93",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "null",
+    "database": "139.162.7.93",
     "host": "doancoso",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "123456",
+    "database": "139.162.7.93",
     "host": "doancoso",
     "dialect": "mysql"
   }
