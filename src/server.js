@@ -44,14 +44,16 @@ connectDB();
 //   })
 // );
 
-const allowedOrigins = [process.env.URL_REACT, process.env.DOMAINS];
+var whitelist = ["http://139.162.7.93", "http://duchai.id.vn"];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      const isAllowed = !origin || allowedOrigins.includes(origin);
-      const allowedOrigin = isAllowed ? origin : allowedOrigins[0];
-      callback(null, allowedOrigin);
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
     },
     credentials: true,
   })
