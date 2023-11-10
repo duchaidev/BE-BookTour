@@ -36,7 +36,7 @@ jobs:
         DB_NAME: ${{ vars.DB_NAME }}
         DB_USERNAME: ${{ vars.DB_USERNAME }}
         DB_PASSWORD: ${{ vars.DB_PASSWORD }}
-        DB_PORT: ${{ vars.DB_PORT }}
+        DB_PORT: ${{ secrets.DB_PORT }}
         DB_DIALECT: ${{ vars.DB_DIALECT }}
 
     - name: Login to Docker Hub
